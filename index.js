@@ -2,7 +2,12 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
+const config = require('./config');
+const mongoose = require('mongoose');
 const app = express();
+
+// connect to mongoose
+mongoose.connect(config.db);
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
