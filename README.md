@@ -21,3 +21,7 @@ This app is a demonstration for how to connecting a react front-end app with gri
     "multer-gridfs-storage": "^2.1.0"
 }
 ```
+
+## Tutorial
+
+[Find the tutorial here](https://medium.com/@andreas.lengkeek/a-major-point-of-trouble-for-first-time-developers-is-working-out-how-to-store-and-upload-files-on-2e847e908332)
