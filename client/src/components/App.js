@@ -45,11 +45,11 @@ class App extends Component {
     fetch('/api/files/'+id, {
       method: 'DELETE'
     }).then(res => res.json())
-    .then(response => {
-      console.log(response);
-      if (response.success) this.loadFiles()
-      else alert('Delete Failed');
-    })
+      .then(response => {
+        console.log(response);
+        if (response.success) this.loadFiles()
+        else alert('Delete Failed');
+      })
   }
 
   uploadFile(event) {
@@ -60,8 +60,7 @@ class App extends Component {
     fetch('/api/files', {
       method: 'POST',
       body: data
-    })
-      .then(res => res.json())
+    }).then(res => res.json())
       .then(data => {
         if (data.success) {
           this.loadFiles();

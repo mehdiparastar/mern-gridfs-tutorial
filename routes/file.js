@@ -42,11 +42,6 @@ router.get('/files', (req, res) => {
          });
       }
       return res.json(files);
-      var readstream = gfs.createReadStream({
-         filename: files[0].filename
-      })
-      res.set('Content-Type', files[0].contentType);
-      return readstream.pipe(res);
    });
 });
 
