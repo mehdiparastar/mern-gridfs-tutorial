@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   loadFiles() {
-    fetch('http://localhost:3001/api/files')
+    fetch('/api/files')
       .then(res => res.json())
       .then(files => {
         if (files.message) {
@@ -42,7 +42,7 @@ class App extends Component {
     event.preventDefault();
     const id = event.target.id;
 
-    fetch('http://localhost:3001/api/files/'+id, {
+    fetch('/api/files/'+id, {
       method: 'DELETE'
     }).then(res => res.json())
     .then(response => {
@@ -57,7 +57,7 @@ class App extends Component {
     let data = new FormData();
     data.append('file', this.state.file);
 
-    fetch('http://localhost:3001/api/files', {
+    fetch('/api/files', {
       method: 'POST',
       body: data
     })
