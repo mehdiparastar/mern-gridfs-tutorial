@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const multer  = require('multer');
+const multer = require('multer');
 const { mongo, connection } = require('mongoose');
 const Grid = require('gridfs-stream');
 Grid.mongo = mongo;
@@ -20,7 +20,7 @@ const singleUpload = multer({ storage: storage }).single('file');
 
 router.get('/files/:filename', (req, res) => {
    gfs.files.find({ filename: req.params.filename }).toArray((err, files) => {
-      if(!files || files.length === 0){
+      if (!files || files.length === 0) {
          return res.status(404).json({
             message: "Could not find file"
          });
@@ -36,7 +36,7 @@ router.get('/files/:filename', (req, res) => {
 
 router.get('/files', (req, res) => {
    gfs.files.find().toArray((err, files) => {
-      if(!files || files.length === 0){
+      if (!files || files.length === 0) {
          return res.status(404).json({
             message: "Could not find files"
          });
@@ -46,13 +46,15 @@ router.get('/files', (req, res) => {
 });
 
 router.post('/files', singleUpload, (req, res) => {
+   console.log('mehdi')
    if (req.file) {
+      console.log(req.file)
       return res.json({
          success: true,
          file: req.file
       });
    }
-    res.send({ success: false });
+   res.send({ success: false });
 });
 
 router.delete('/files/:id', (req, res) => {

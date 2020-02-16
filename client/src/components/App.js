@@ -42,7 +42,7 @@ class App extends Component {
     event.preventDefault();
     const id = event.target.id;
 
-    fetch('/api/files/'+id, {
+    fetch('/api/files/' + id, {
       method: 'DELETE'
     }).then(res => res.json())
       .then(response => {
@@ -56,7 +56,7 @@ class App extends Component {
     event.preventDefault();
     let data = new FormData();
     data.append('file', this.state.file);
-
+    console.log(data)
     fetch('/api/files', {
       method: 'POST',
       body: data
@@ -79,15 +79,15 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <div className="App-content">
-          <input type="file" onChange={this.fileChanged.bind(this)}/>
+          <input type="file" onChange={this.fileChanged.bind(this)} />
           <button onClick={this.uploadFile.bind(this)}>Upload</button>
           <table className="App-table">
             <thead>
               <tr>
-                  <th>File</th>
-                  <th>Uploaded</th>
-                  <th>Size</th>
-                  <th></th>
+                <th>File</th>
+                <th>Uploaded</th>
+                <th>Size</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -97,7 +97,7 @@ class App extends Component {
                   <tr key={index}>
                     <td><a href={`http://localhost:3001/api/files/${file.filename}`}>{file.filename}</a></td>
                     <td>{`${d.toLocaleDateString()} ${d.toLocaleTimeString()}`}</td>
-                    <td>{(Math.round(file.length/100) / 10)+'KB'}</td>
+                    <td>{(Math.round(file.length / 100) / 10) + 'KB'}</td>
                     <td><button onClick={this.deleteFile.bind(this)} id={file._id}>Remove</button></td>
                   </tr>
                 )
